@@ -1,0 +1,55 @@
+{
+  "name": "@open-dcp/charts",
+  "version": "0.3.1",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./plotly": {
+      "types": "./dist/Plotly.d.ts",
+      "default": "./dist/Plotly.js"
+    }
+  },
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "npm run build:cached && tsc --watch -p tsconfig.build.json",
+    "bundle:plotly": "node scripts/build-plotly-dcp.cjs",
+    "build:cached": "tsc -p tsconfig.build.json && cp -r src/types/ dist/types && cp -r src/vendor/ dist/vendor/",
+    "build": "npm run build:cached",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "rxjs": ">=7.8.2"
+  },
+  "dependencies": {
+    "@open-dcp/utilities": ">=1.1.0",
+    "@types/plotly.js": "^2.35.2",
+    "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.11",
+    "esbuild": "^0.28.1",
+    "jest": "^29.7.0",
+    "jest-junit": "^17.0.0",
+    "plotly.js": "3.7.0",
+    "ts-jest": "^29.4.4",
+    "typescript": "^5.7.3"
+  },
+  "overrides": {
+    "maplibre-gl": "^6.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Roche/dcp-pkg-fe-ts-charts.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
